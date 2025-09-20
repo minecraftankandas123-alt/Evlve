@@ -1,0 +1,17 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class ReelsTab extends JPanel {
+    private EvolveApp app;
+
+    public ReelsTab(EvolveApp app) {
+        this.app = app;
+        setLayout(new BorderLayout());
+        JLabel label = new JLabel("Reels: Vertical Video/Image Feed", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 24));
+        add(label, BorderLayout.NORTH);
+
+        // Placeholder: Add your reels logic here (vertical scroll, video/image preview)
+        add(new JLabel("Reels feed goes here...", SwingConstants.CENTER), BorderLayout.CENTER);
+    }
+}
