@@ -1,0 +1,17 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class MessagesTab extends JPanel {
+    private EvolveApp app;
+
+    public MessagesTab(EvolveApp app) {
+        this.app = app;
+        setLayout(new BorderLayout());
+        JLabel label = new JLabel("Messages", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 24));
+        add(label, BorderLayout.NORTH);
+
+        // Placeholder: Add your messaging UI here (chat list, chat window)
+        add(new JLabel("Messages UI goes here...", SwingConstants.CENTER), BorderLayout.CENTER);
+    }
+}
