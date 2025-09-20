@@ -1,0 +1,16 @@
+import javax.swing.*;
+
+public class EvolveMain {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Evolve - Instagram Desktop");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(900, 700);
+            frame.setResizable(false);
+
+            EvolveApp app = new EvolveApp();
+            frame.setContentPane(app);
+            frame.setVisible(true);
+        });
+    }
+}
