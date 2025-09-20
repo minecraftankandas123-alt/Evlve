@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+public class EvolveUser {
+    private String username;
+    private String password;
+    private String bio;
+    private ArrayList<EvolvePost> posts;
+    private ArrayList<EvolveUser> followers;
+    private ArrayList<EvolveUser> following;
+
+    public EvolveUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.bio = "";
+        this.posts = new ArrayList<EvolvePost>();
+        this.followers = new ArrayList<EvolveUser>();
+        this.following = new ArrayList<EvolveUser>();
+    }
+
+    public String getUsername() { return username; }
+    public boolean checkPassword(String pw) { return password.equals(pw); }
+    public ArrayList<EvolvePost> getPosts() { return posts; }
+    public ArrayList<EvolveUser> getFollowers() { return followers; }
+    public ArrayList<EvolveUser> getFollowing() { return following; }
+    public String getBio() { return bio; }
+    public void setBio(String newBio) { bio = newBio; }
+    public void addPost(EvolvePost post) { posts.add(post); }
+    public void follow(EvolveUser other) {
+        if (!following.contains(other) && other != this) {
+            following.add(other);
+            other.followers.add(this);
+        }
+    }
+    public void unfollow(EvolveUser other) {
+        if (following.contains(other)) {
+            following.remove(other);
+            other.followers.remove(this);
+        }
+    }
+}
