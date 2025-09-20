@@ -1,0 +1,17 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class SettingsTab extends JPanel {
+    private EvolveApp app;
+
+    public SettingsTab(EvolveApp app) {
+        this.app = app;
+        setLayout(new BorderLayout());
+        JLabel label = new JLabel("Settings, Privacy, Notifications", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 24));
+        add(label, BorderLayout.NORTH);
+
+        // Placeholder: Add your settings UI here (privacy, notifications, etc)
+        add(new JLabel("Settings UI goes here...", SwingConstants.CENTER), BorderLayout.CENTER);
+    }
+}
