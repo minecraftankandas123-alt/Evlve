@@ -1,0 +1,68 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class EvolveApp extends JPanel {
+    private CardLayout cardLayout;
+    private JPanel contentPanel;
+    private String[] tabNames = {"Feed", "Stories", "Reels", "Messages", "Profile", "Settings"};
+    private JPanel tabBar;
+    private int selectedTab = 0;
+
+    // Tab panels
+    private FeedTab feedTab;
+    private StoriesTab storiesTab;
+    private ReelsTab reelsTab;
+    private MessagesTab messagesTab;
+    private ProfileTab profileTab;
+    private SettingsTab settingsTab;
+
+    public EvolveApp() {
+        setLayout(new BorderLayout());
+        cardLayout = new CardLayout();
+        contentPanel = new JPanel(cardLayout);
+
+        // Initialize panels
+        feedTab = new FeedTab(this);
+        storiesTab = new StoriesTab(this);
+        reelsTab = new ReelsTab(this);
+        messagesTab = new MessagesTab(this);
+        profileTab = new ProfileTab(this);
+        settingsTab = new SettingsTab(this);
+
+        contentPanel.add(feedTab, "Feed");
+        contentPanel.add(storiesTab, "Stories");
+        contentPanel.add(reelsTab, "Reels");
+        contentPanel.add(messagesTab, "Messages");
+        contentPanel.add(profileTab, "Profile");
+        contentPanel.add(settingsTab, "Settings");
+
+        add(contentPanel, BorderLayout.CENTER);
+
+        // Tab bar (bottom)
+        tabBar = new JPanel(new GridLayout(1, tabNames.length));
+        for (int i = 0; i < tabNames.length; i++) {
+            final int idx = i;
+            JButton btn = new JButton(tabNames[i]);
+            btn.setFocusPainted(false);
+            btn.setFont(new Font("Arial", Font.BOLD, 16));
+            btn.setBackground(i == 0 ? new Color(30, 144, 255) : Color.LIGHT_GRAY);
+            btn.addActionListener(e -> switchTab(idx));
+            tabBar.add(btn);
+        }
+        add(tabBar, BorderLayout.SOUTH);
+    }
+
+    // Animated tab switching (slide effect)
+    private void switchTab(int idx) {
+        if (selectedTab == idx) return;
+        cardLayout.show(contentPanel, tabNames[idx]);
+        selectedTab = idx;
+
+        // Update tab bar colors
+        for (int i = 0; i < tabBar.getComponentCount(); i++) {
+            JButton btn = (JButton) tabBar.getComponent(i);
+            btn.setBackground(i == idx ? new Color(30, 144, 255) : Color.LIGHT_GRAY);
+        }
+    }
+}
